@@ -2,8 +2,6 @@
 <html lang="en">
 <!-- loads in the static collected from command python3 manage.py collectstatic-->
 {% load static %}
-<!-- css link -->
-<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
 
 <head>
     <meta charset="utf-8">
@@ -41,16 +39,7 @@
 
 <body>
 
-    <nav class="navbar navbar-defult navbar-fixed-top">
-        <div class="container-fluid">
 
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'home' %}">home</a>
-                <a class="navbar-brand" href="{% url 'work' %}">projects</a>
-                <a class="navbar-brand" href="{% url 'about' %}">about</a>
-            </div>
-        </div>
-    </nav>
 
     <main>
         <!-- top of page ware the brief intro should be along with pictures and email -->
@@ -58,25 +47,21 @@
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <!-- profile image static name is the same as pic in static folder created from command python3 manage.py collectstatic -->
-                    <img class="rounded-circle mb-3" src="{% static 'Snapchat-1456340180.jpg' %}" alt="profile_pic"
-                        style="width: 250px; height: 250px">
-                    <h1 class="fw-dark">Bailey R</h1>
-                    <p class="lead text-unmuted" style="color: #070707; font-weight: bold;"> Hello my name is Bailey
-                        Rechkemmer. I'm a software developer from General Assembly Boot camp. I'm looking forward to
-                        building my skills and becoming a better developer. </p> <!-- come back later and put in -->
+                    <img class="mb-3" src="{{project.project_image.url}}" alt="profile_pic"
+                        style="width: 420px; height: 490px">
+                    <h1 class="fw-light">{{ project.title }}</h1>
+                    <p class="lead text-muted">{{ project.description}}</p> <!-- come back later and put in -->
                     <p>
-                        <a href="mailto:rechkemmer3@gmail.com" class="btn btn-primary my-2">Email Me</a>
+                        <a href="{% url 'work' %}" class="btn btn-primary my-2">Back</a>
                     </p>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer className="footer" class="text-muted py-4">
         <div class="container">
-            <p class="float-end mb-1">
-                <a href="#">Back to top</a>
-            </p>
             <p class="mb-1">links</p>
 
             <p class="mb-0">
@@ -85,13 +70,9 @@
             </p>
         </div>
     </footer>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
-
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
 
 
 </body>

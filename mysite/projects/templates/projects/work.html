@@ -3,7 +3,7 @@
 <!-- loads in the static collected from command python3 manage.py collectstatic-->
 {% load static %}
 <!-- css link -->
-<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'home/work.css' %}" />
 
 <head>
     <meta charset="utf-8">
@@ -41,7 +41,8 @@
 
 <body>
 
-    <nav class="navbar navbar-defult navbar-fixed-top">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar">
         <div class="container-fluid">
 
             <div class="navbar-header">
@@ -49,6 +50,7 @@
                 <a class="navbar-brand" href="{% url 'work' %}">projects</a>
                 <a class="navbar-brand" href="{% url 'about' %}">about</a>
             </div>
+
         </div>
     </nav>
 
@@ -61,47 +63,29 @@
                     <img class="rounded-circle mb-3" src="{% static 'Snapchat-1456340180.jpg' %}" alt="profile_pic"
                         style="width: 250px; height: 250px">
                     <h1 class="fw-dark">Bailey R</h1>
-                    <p class="lead text-unmuted" style="color: #070707; font-weight: bold;">this is a little bit about
-                        my self</p> <!-- come back later and put in -->
+                    <p class="lead text-unmuted" style="color: #070707; font-weight: bold;">Here are some of the
+                        projects i have worked on so far</p> <!-- come back later and put in -->
                 </div>
             </div>
         </section>
+
         <div class="album py-5 bg-light">
             <div class="container">
 
-                <div class="row">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <!-- starts for loop -->
-                    <p id="elementText1">I am from Iowa, I graduated high school at Southeast Polk then joined the navy
-                        instead of going to
-                        college. in the navy
-                        I gained skills in leadership, team building, communication, and most importantly I learned to
-                        surround myself with
-                        people wanting to improve themselves as well as others.
+                    {% for project in projects.all %}
 
-                    </p><br>
-                    <p id="elementText1">
-                        I was medically discharged and came back home to Iowa, from there I went to join the workforce.
-                        I started with the
-                        electricians trade school Tesdell electric, i stayed on for three more years and dew to lay offs
-                        i left. Soon after
-                        I
-                        started working as an erosion control engineer at my uncle's company and gained more leadership
-                        skills as well as
-                        gained
-                        more responsibility after I became a crew lead and driver.
+                    <div class="col">
+                        <a href="{% url 'detail' project.id %}" class="card shadow-sm">
+                            <img src="{{ project.project_image.url }}" alt="" style="width: 100%; height: 350px">
+                            <div class="card-body">
+                                <p class="card-text">{{ project.title }}</p>
 
-                    </p><br>
-                    <p id="elementText1">
-                        Shortly after I got my CDL for work I bought a house, and more importantly I got my dog a blue
-                        heeler named Sora. It
-                        was
-                        Thanks to Sora, I got a second date with my now wife. This got me thinking I needed to set an
-                        example for my future
-                        kids like all of the people who did the same for me. This led to my decision to join the best
-                        immersive boot camp
-                        around, General Assembly, to start my career as a software engineer.
-
-                    </p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -24,5 +24,10 @@ import projects.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', projects.views.home, name='home'),
-    path('about', projects.views.about, name='about'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('about/', projects.views.about, name='about'),
+    path('detail/<int:project_id>', projects.views.detail, name='detail'),
+    path('work/', projects.views.work, name='work'),
+] 
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
