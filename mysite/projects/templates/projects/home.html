@@ -1,11 +1,3 @@
-<h1>list of my projects</h1>
-
-{% for project in projects.all %}
-
-<p>{{ project.title }}</p>
-
-{% endfor %}
-
 <!doctype html>
 <html lang="en">
 
@@ -66,7 +58,7 @@
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                
+                {% for project in projects.all %}
                     <div class="col">
                         <div class="card shadow-sm">
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
@@ -78,8 +70,7 @@
                             </svg>
 
                             <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text">{{ project.title }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -90,6 +81,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
