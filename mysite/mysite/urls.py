@@ -23,7 +23,7 @@ import projects
 import projects.views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', projects.views.home, name='home'),
+    path('', projects.views.home, name='home'),
     path('about/', projects.views.about, name='about'),
     path('detail/<int:project_id>', projects.views.detail, name='detail'),
     path('work/', projects.views.work, name='work'),
