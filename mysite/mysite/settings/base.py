@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import dj_database_url
-from dotenv import load_dotenv, find_dotenv
+import dj_heroku
 
 from pathlib import Path
 # for static in projects folder
@@ -118,6 +118,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # might have to mess with when deploying refer to video number 22 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+dj_heroku_.settings(locals())
 
 MEDIA_URL = '/media/'
 # might have to mess with when deploying refer to video number 22 
