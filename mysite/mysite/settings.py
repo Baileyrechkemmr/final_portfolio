@@ -9,15 +9,26 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import dj_database_url
-from dotenv import load_dotenv, find_dotenv
 
 from pathlib import Path
 # for static in projects folder
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-t66d4j_^2vh^d5%z_i!_$hf!9vp083q33_udji-((!3ewsgiw8'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -29,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'projects',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -66,10 +76,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-load_dotenv(find_dotenv())
-
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite://db.sqlite3', conn_max_age=600, ssl_require=False)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -112,10 +123,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # might have to mess with when deploying refer to video number 22 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_URL = '/media/'
-# might have to mess with when deploying refer to video number 22 
-MEDIA_ROOT = BASE_DIR
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
