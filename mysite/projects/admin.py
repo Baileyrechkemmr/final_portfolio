@@ -7,3 +7,4 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ['title']
     search_fields = ['title', 'description']
     list_filter = ['title']
+    
