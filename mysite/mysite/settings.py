@@ -147,7 +147,7 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static/css'),
+    os.path.join(BASE_DIR, 'projects/static/css'),
 )
 
 # Default primary key field type
