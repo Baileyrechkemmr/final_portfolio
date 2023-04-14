@@ -28,6 +28,7 @@ urlpatterns = [
     path('detail/<int:project_id>', projects.views.detail, name='detail'),
     path('work/', projects.views.work, name='work'),
 ] 
+if settings.DEBUG:
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
